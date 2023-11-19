@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+
+<head>
+    <link rel="icon" href="img/icon1.png" type="image">
+  </head>
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <h3 class="text-white">Gerador</h3>
+
+    <ul class="navbar-nav mr-auto">
+        
+    </ul>
+
+</nav>
+
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de CPF</title>
+</head>
+<body>
+
+<button id="gerarCpf" class="btn btn-success" >Gerar CPF</button> </a> 
+
+
+<!-- Crie um elemento no HTML para exibir o CPF gerado -->
+<p id="cpfGerado"></p>
+
+<script>
+    // Função para gerar um número aleatório entre min e max
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    // Função para gerar um CPF válido (simples)
+    function gerarCpf() {
+        let cpf = '';
+
+        // Gera os nove primeiros dígitos do CPF
+        for (let i = 0; i < 9; i++) {
+            cpf += getRandomInt(0, 9).toString();
+        }
+
+        // Calcula o primeiro dígito verificador
+        let soma = 0;
+        for (let i = 0; i < 9; i++) {
+            soma += parseInt(cpf.charAt(i)) * (10 - i);
+        }
+        let primeiroDigito = 11 - (soma % 11);
+        if (primeiroDigito === 10 || primeiroDigito === 11) {
+            primeiroDigito = 0;
+        }
+        cpf += primeiroDigito.toString();
+
+        // Calcula o segundo dígito verificador
+        soma = 0;
+        for (let i = 0; i < 10; i++) {
+            soma += parseInt(cpf.charAt(i)) * (11 - i);
+        }
+        let segundoDigito = 11 - (soma % 11);
+        if (segundoDigito === 10 || segundoDigito === 11) {
+            segundoDigito = 0;
+        }
+        cpf += segundoDigito.toString();
+
+        return cpf;
+    }
+
+    // Adiciona um ouvinte de evento para o botão
+    document.getElementById('gerarCpf').addEventListener('click', function () {
+        // Chama a função gerarCpf() e exibe o CPF gerado no HTML
+        document.getElementById('cpfGerado').innerHTML = 'CPF Gerado: ' + gerarCpf();
+    });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="/js/bootstrap.min.js"></script>
+</html>
