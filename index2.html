@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/style.css">
     <script src="geradorcpf.js"></script>
     <script src="geradorcnpj.js"></script>
+    <script src="geradorplacas.js"></script>
 </head>
 
 <body>
@@ -19,7 +20,7 @@
         <ul class="navbar-nav mr-auto">
         </ul>
     </nav>
-
+    <br>
     <div class="card-header">
         <h3>CPF Gerado:<h3>
         <div class="caixa">
@@ -28,7 +29,7 @@
         <button onclick="exibirCpf(true)" class="btn btn-success">Gerar CPF</button>
         <button onclick="exibirCpf(false)" class="btn btn-success">Gerar CPF sem pontuação</button>
     </div>
-
+    <br>
     <div class="card-header">
         <h3>CNPJ Gerado:</h3>
         <div class="caixa">
@@ -36,6 +37,22 @@
         </div>          
         <button onclick="exibircnpj(true)" class="btn btn-success">Gerar CNPJ</button>
         <button onclick="exibircnpj(false)" class="btn btn-success">Gerar CNPJ sem pontuação</button>
+    </div>
+    <br>
+    <div class="card-header">
+        <h3>Placa Gerada:</h3>
+        <div class="caixa">
+        <h3 id="placaM"></h3>
+        </div>          
+        <button onclick="exibirplacaM()" class="btn btn-success">Gerar placa Mercosul</button>
+    </div>
+
+    <div class="card-header">
+        <h3>Placa Gerada:</h3>
+        <div class="caixa">
+        <h3 id="placaA"></h3>
+        </div>          
+        <button onclick="exibirplacaA()" class="btn btn-success">Gerar placa antiga</button>
     </div>
 
     <script>
@@ -49,7 +66,17 @@
             var cpnpj = gerarCNPJ(ponto);
             document.getElementById("cnpjgerado").innerHTML =  cpnpj;
         }
-
+        // Função para chamar e exibir a placa Mercosul gerada
+        function exibirplacaM() {
+            var placa2 = gerarPlacaMercosul();
+            document.getElementById("placaM").innerHTML =  placa2;
+        }
+         // Função para chamar e exibir a placa antiga
+        function exibirplacaA() {
+            var placa1 = gerarPlacaAntiga();
+            document.getElementById("placaA").innerHTML =  placa1;
+        }
+        
     </script>
     <style>
         .caixa {
