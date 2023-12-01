@@ -27,13 +27,25 @@
         <button onclick="copiarParaAreaDeTransferencia()" class="btn btn-primary">Copiar CPF</button>
     </div>
 
+    <div class="card-header">
+        <h3>CNPJ Gerado:<h3>
+        <h3 id="cnpjgerado">=</h3>
+        <button onclick="exibircnpj(true)" class="btn btn-success">Gerar CPF</button>
+        <button onclick="exibircnpj(false)" class="btn btn-success">Gerar CPF sem pontuação</button>
+        <button onclick="copiarParaAreaDeTransferencia()" class="btn btn-primary">Copiar CPF</button>
+    </div>
+
     <script>
         // Função para chamar e exibir o CPF gerado
         function exibirCpf(ponto) {
             var cpf = gerarCpfAleatorio(ponto);
             document.getElementById("cpfGerado").innerHTML =  cpf;
         }
-
+        function exibircnpj(ponto) {
+            var cpnpj = gerarCNPJ(ponto);
+            document.getElementById("cnpjgerado").innerHTML =  cpnpj;
+        }
+        
         // Função para copiar o CPF para a área de transferência
         function copiarParaAreaDeTransferencia() {
             // Seleciona o texto do elemento com o ID "cpfGerado"
