@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="/style.css">
     <script src="geradorcpf.js"></script>
+    <script src="geradorcnpj.js"></script>
 </head>
 
 <body>
@@ -21,18 +22,20 @@
 
     <div class="card-header">
         <h3>CPF Gerado:<h3>
-        <h3 id="cpfGerado">=</h3>
+        <div class="caixa">
+             <h3 id="cpfGerado"></h3>
+        </div>  
         <button onclick="exibirCpf(true)" class="btn btn-success">Gerar CPF</button>
         <button onclick="exibirCpf(false)" class="btn btn-success">Gerar CPF sem pontuação</button>
-        <button onclick="copiarParaAreaDeTransferencia()" class="btn btn-primary">Copiar CPF</button>
     </div>
 
     <div class="card-header">
-        <h3>CNPJ Gerado:<h3>
-        <h3 id="cnpjgerado">=</h3>
-        <button onclick="exibircnpj(true)" class="btn btn-success">Gerar CPF</button>
-        <button onclick="exibircnpj(false)" class="btn btn-success">Gerar CPF sem pontuação</button>
-        <button onclick="copiarParaAreaDeTransferencia()" class="btn btn-primary">Copiar CPF</button>
+        <h3>CNPJ Gerado:</h3>
+        <div class="caixa">
+        <h3 id="cnpjgerado"></h3>
+        </div>          
+        <button onclick="exibircnpj(true)" class="btn btn-success">Gerar CNPJ</button>
+        <button onclick="exibircnpj(false)" class="btn btn-success">Gerar CNPJ sem pontuação</button>
     </div>
 
     <script>
@@ -41,37 +44,24 @@
             var cpf = gerarCpfAleatorio(ponto);
             document.getElementById("cpfGerado").innerHTML =  cpf;
         }
+        // Função para chamar e exibir o CNPJ gerado
         function exibircnpj(ponto) {
             var cpnpj = gerarCNPJ(ponto);
             document.getElementById("cnpjgerado").innerHTML =  cpnpj;
         }
-        
-        // Função para copiar o CPF para a área de transferência
-        function copiarParaAreaDeTransferencia() {
-            // Seleciona o texto do elemento com o ID "cpfGerado"
-            var textoCpf = document.getElementById("cpfGerado").innerText;
 
-            // Cria um elemento de área de transferência
-            var inputTemporario = document.createElement("input");
-            inputTemporario.setAttribute("value", textoCpf);
-
-            // Adiciona o elemento de área de transferência ao corpo do documento
-            document.body.appendChild(inputTemporario);
-
-            // Seleciona o texto no elemento de área de transferência
-            inputTemporario.select();
-            inputTemporario.setSelectionRange(0, 99999); // Para dispositivos móveis
-
-            // Copia o texto para a área de transferência
-            document.execCommand("copy");
-
-            // Remove o elemento de área de transferência temporário
-            document.body.removeChild(inputTemporario);
-
-            // Exibe uma mensagem indicando que o CPF foi copiado
-            alert("CPF copiado para a área de transferência: " + textoCpf);
-        }
     </script>
+    <style>
+        .caixa {
+          border: 1px solid #000000;
+          padding: 5px;
+          margin: 10px;
+          background-color: #aaec7e;
+          border-radius: 10px;
+          line-height: 30px;
+          width: 255px;
+        }
+      </style>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
