@@ -1,108 +1,146 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerador</title>
+    <link rel="icon" href="img/icon1.png" type="image">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="/style.css">
-</head>
-
-
-<head>
-    <link rel="icon" href="img/icon1.png" type="image">
-  </head>
-<nav class="navbar navbar-expand-lg navbar-dark bg-success">
-        <h3 class="text-white">Gerador</h3>
-
-    <ul class="navbar-nav mr-auto">
-        
-    </ul>
-
-</nav>
-
-
-
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerador de CPF</title>
+    <script src="geradorcpf.js"></script>
+    <script src="geradorcnpj.js"></script>
+    <script src="geradorplacas.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="card-header">
-            <h3 id="cpfGerado">CPF Gerado:</h3>
-        <button id="gerarCpf" class="btn btn-success" >Gerar CPF</button> </a> 
-        </div>
 
-    </div>
-    <p id="cpfGerado"></p>
-    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <h3 class="text-white">Gerador</h3>
+        <ul class="navbar-nav mr-auto">
+        </ul>
+    </nav>
+
+    <br>
+
+    <table class="table table-bordered"> 
+        <thead>
+            <tr>
+                <th>CPF</th>
+                <th>CNPJ</th>
+            </tr>
+
+        </thead>
+        <TBody>
+            <tr>
+                <td><div class="card-header">
+                    <h3>CPF Gerado:<h3>
+                    <div class="caixa">
+                     <h3 id="cpfGerado"></h3>
+                    </div>  
+                    <button onclick="exibirCpf(true)" class="btn btn-success">Gerar CPF</button>
+                    <button onclick="exibirCpf(false)" class="btn btn-success">Gerar CPF sem pontuação</button>
+                    </div>
+                </td>
+                <td>
+
+                    <div class="card-header">
+                        <h3>CNPJ Gerado:</h3>
+                        <div class="caixa">
+                        <h3 id="cnpjgerado"></h3>
+                        </div>          
+                        <button onclick="exibircnpj(true)" class="btn btn-success">Gerar CNPJ</button>
+                        <button onclick="exibircnpj(false)" class="btn btn-success">Gerar CNPJ sem pontuação</button>
+                    </div>
+
+                </td>
+            </tr>
+        </TBody>
+        <br>
+        <thead>
+            <tr>
+                <th>Placa Mercosul</th>
+                <th>Placa antiga</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="card-header">
+                        <h3>Placa Gerada:</h3>
+                        <div class="caixa">
+                        <h3 id="placaM"></h3>
+                        </div>          
+                        <button onclick="exibirplacaM()" class="btn btn-success">Gerar placa Mercosul</button>
+                    </div>
+                </td>
+                
+                <td>
+                    <div class="card-header">
+                        <h3>Placa Gerada:</h3>
+                        <div class="caixa">
+                        <h3 id="placaA"></h3>
+                        </div>          
+                        <button onclick="exibirplacaA()" class="btn btn-success">Gerar placa antiga</button>
+                    </div>
+                </td>
+            </tr>
+
+        </tbody>
+
+
+    </table>
 
 
 
-<script>
-    // Função para gerar um número aleatório entre min e max
-    function getRandomInt(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
 
-    // Função para gerar um CPF válido (simples)
-    function gerarCpf() {
-        let cpf = '';
+   
 
-        // Gera os nove primeiros dígitos do CPF
-        for (let i = 0; i < 9; i++) {
-            cpf += getRandomInt(0, 9).toString();
+
+
+    <script>
+        // Função para chamar e exibir o CPF gerado
+        function exibirCpf(ponto) {
+            var cpf = gerarCpfAleatorio(ponto);
+            document.getElementById("cpfGerado").innerHTML =  cpf;
         }
-
-        // Calcula o primeiro dígito verificador
-        let soma = 0;
-        for (let i = 0; i < 9; i++) {
-            soma += parseInt(cpf.charAt(i)) * (10 - i);
+        // Função para chamar e exibir o CNPJ gerado
+        function exibircnpj(ponto) {
+            var cpnpj = gerarCNPJ(ponto);
+            document.getElementById("cnpjgerado").innerHTML =  cpnpj;
         }
-        let primeiroDigito = 11 - (soma % 11);
-        if (primeiroDigito === 10 || primeiroDigito === 11) {
-            primeiroDigito = 0;
+        // Função para chamar e exibir a placa Mercosul gerada
+        function exibirplacaM() {
+            var placa2 = gerarPlacaMercosul();
+            document.getElementById("placaM").innerHTML =  placa2;
         }
-        cpf += primeiroDigito.toString();
-
-        // Calcula o segundo dígito verificador
-        soma = 0;
-        for (let i = 0; i < 10; i++) {
-            soma += parseInt(cpf.charAt(i)) * (11 - i);
+         // Função para chamar e exibir a placa antiga
+        function exibirplacaA() {
+            var placa1 = gerarPlacaAntiga();
+            document.getElementById("placaA").innerHTML =  placa1;
         }
-        let segundoDigito = 11 - (soma % 11);
-        if (segundoDigito === 10 || segundoDigito === 11) {
-            segundoDigito = 0;
+        
+    </script>
+    <style>
+        .caixa {
+          border: 1px solid #000000;
+          padding: 5px;
+          margin: 10px;
+          background-color: #aaec7e;
+          border-radius: 10px;
+          line-height: 30px;
+          width: 255px;
         }
-        cpf += segundoDigito.toString();
+      </style>
 
-        return cpf;
-    }
-
-    // Adiciona um ouvinte de evento para o botão
-    document.getElementById('gerarCpf').addEventListener('click', function () {
-        // Chama a função gerarCpf() e exibe o CPF gerado no HTML
-        document.getElementById('cpfGerado').innerHTML = 'CPF Gerado: ' + gerarCpf();
-    });
-</script>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="/js/bootstrap.min.js"></script>
 </body>
-</html>
 
-
-
-
-
-
-
-
-
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="/js/bootstrap.min.js"></script>
 </html>
