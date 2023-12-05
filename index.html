@@ -13,6 +13,8 @@
         <script src="geradorcnpj.js"></script>
         <script src="geradorplacas.js"></script>
         <script src="conversor.js"></script>
+        <script src="conversor2.js"></script>
+        <script src="copiar.js"></script>
     </head>
     <body>
 
@@ -31,6 +33,7 @@
             </div>  
             <button onclick="exibirCpf(true)" class="btn btn-primary">Gerar CPF</button>
             <button onclick="exibirCpf(false)" class="btn btn-primary">Gerar CPF sem pontuação</button>
+            <button class="btn btn-primary" onclick="copyToClipboardFromId('cpfGerado')">Copiar</button> 
             <hr>
             <h3>Gerador de CNPJ</h3>
             <h6>CNPJ Gerado:</h6>
@@ -39,15 +42,17 @@
             </div>          
             <button onclick="exibircnpj(true)" class="btn btn-primary">Gerar CNPJ</button>
             <button onclick="exibircnpj(false)" class="btn btn-primary">Gerar CNPJ sem pontuação</button>
+            <button class="btn btn-primary" onclick="copyToClipboardFromId('cnpjgerado')">Copiar</button>
         </div>
 
         <div class="card-header">
-            <h3>Gerador de plca Mercosul</h3>
+            <h3>Gerador de placa Mercosul</h3>
             <h6>Placa Gerada:</h6>
             <div class="caixa1">
             <h6 id="placaM">AAA1A11</h6>
             </div>          
             <button onclick="exibirplacaM()" class="btn btn-primary">Gerar placa Mercosul</button>
+            <button class="btn btn-primary" onclick="copyToClipboardFromId('placaM')">Copiar</button>
             <hr>
             <h3>Gerador de placa antiga</h3>
             <h6>Placa Gerada:</h6>
@@ -55,14 +60,23 @@
             <h6 id="placaA">BBB-0000</h6>
             </div>          
             <button onclick="exibirplacaA()" class="btn btn-primary">Gerar placa antiga</button>
+            <button class="btn btn-primary" onclick="copyToClipboardFromId('placaA')">Copiar</button>
         </div>
         <div class="card-header">
-            <h3>Conversor de Placa</h3>
+            <h3>Conversor de Placa para Mercosul</h3>
             <label for="placaAntiga">Digite a placa antiga:</label>
             <input class="caixa1" type="text" id="placaAntiga">
-            <p id="placaConvertida"></p>
+            <p>placa Mercosul:<span class="caixa1"id="placaConvertida"></span></p>
             <button onclick="converterPlaca()" class="btn btn-primary">Converter</button>
-            
+            <button class="btn btn-primary" onclick="copyToClipboardFromId('placaConvertida')">Copiar</button>
+        </div>
+        <div class="card-header">
+            <h3>Conversor de Placa para antiga</h3>
+            <label for="placaMercosul">Digite a placa :</label>
+            <input class="caixa1" type="text" id="placaMercosul">
+            <p>placa antiga:<span class="caixa1"id="placaConvertida1"></span></p>
+            <button onclick="converterPlacaMercosulParaAntiga()" class="btn btn-primary">Converter</button>
+            <button class="btn btn-primary" onclick="copyToClipboardFromId('placaConvertida1')">Copiar</button> 
         </div>
         
         

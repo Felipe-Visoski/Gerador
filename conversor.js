@@ -1,4 +1,4 @@
-function converterPlaca() {
+  function converterPlaca() {
     // Obter o valor da placa antiga
     var placaAntiga = document.getElementById('placaAntiga').value.toUpperCase();
 
@@ -13,7 +13,7 @@ function converterPlaca() {
       var placaNova = placaAntiga.substring(0, 3) + parteNumerica.charAt(0) + segundaLetra + parteNumerica.substring(2);
 
       // Atualizar o elemento HTML com a placa convertida
-      document.getElementById('placaConvertida').textContent = 'Placa Mercosul: ' + placaNova;
+      document.getElementById('placaConvertida').textContent = placaNova;
     } else {
       // Informar ao usuário que o formato da placa antiga é inválido
       alert('Formato de placa antiga inválido. Digite uma placa no formato AAA-1111.');
