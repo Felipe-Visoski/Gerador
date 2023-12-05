@@ -44,7 +44,13 @@ function gerarPlacaAntiga() {
     return PlacaAntiga;
 }
 
-
-
-
-module.exports = {gerarPlacaMercosul,gerarPlacaAntiga};
+// Função para chamar e exibir a placa Mercosul gerada
+function exibirplacaM() {
+    var placa2 = gerarPlacaMercosul();
+    document.getElementById("placaM").innerHTML =  placa2;
+}
+ // Função para chamar e exibir a placa antiga
+function exibirplacaA() {
+    var placa1 = gerarPlacaAntiga();
+    document.getElementById("placaA").innerHTML =  placa1;
+}

@@ -31,5 +31,8 @@ function mod(dividendo,divisor) {
 }
 
 
-
-module.exports = gerarCNPJ;
+// Função para chamar e exibir o CNPJ gerado
+function exibircnpj(ponto) {
+    var cpnpj = gerarCNPJ(ponto);
+    document.getElementById("cnpjgerado").innerHTML =  cpnpj;
+}

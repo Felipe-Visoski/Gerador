@@ -32,4 +32,9 @@ function gerarCpfAleatorio(ponto) {
   }
  
 }
-module.exports = gerarCpfAleatorio;
+// Função para chamar e exibir o CPF gerado
+function exibirCpf(ponto) {
+  var cpf = gerarCpfAleatorio(ponto);
+  document.getElementById("cpfGerado").innerHTML =  cpf;
+}
+

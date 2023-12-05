@@ -1,146 +1,109 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerador</title>
-    <link rel="icon" href="img/icon1.png" type="image">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="/style.css">
-    <script src="geradorcpf.js"></script>
-    <script src="geradorcnpj.js"></script>
-    <script src="geradorplacas.js"></script>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gerador/Conversor</title>
+        <link rel="icon" href="img/icon1.png" type="image">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="/style.css">
+        <script src="geradorcpf.js"></script>
+        <script src="geradorcnpj.js"></script>
+        <script src="geradorplacas.js"></script>
+        <script src="conversor.js"></script>
+    </head>
+    <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
-        <h3 class="text-white">Gerador</h3>
-        <ul class="navbar-nav mr-auto">
-        </ul>
-    </nav>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <img src="img/engranagem.png" alt="" class="img-fluid align-middle" >
+            <h3 class="text-white">Gerador/Conversor</h3>
+            <ul class="navbar-nav mr-auto">
+            </ul>
+        </nav>
+    
+        <div class="card-header">
+            <h3>Gerador de CPF</h3>
+            <h6>CPF Gerado:<h6>
+            <div class="caixa">
+                <h6 id="cpfGerado">000.000.00-00</h6>
+            </div>  
+            <button onclick="exibirCpf(true)" class="btn btn-primary">Gerar CPF</button>
+            <button onclick="exibirCpf(false)" class="btn btn-primary">Gerar CPF sem pontuação</button>
+            <hr>
+            <h3>Gerador de CNPJ</h3>
+            <h6>CNPJ Gerado:</h6>
+            <div class="caixa">
+                <h6 id="cnpjgerado">00.000.000/0000-00</h6>
+            </div>          
+            <button onclick="exibircnpj(true)" class="btn btn-primary">Gerar CNPJ</button>
+            <button onclick="exibircnpj(false)" class="btn btn-primary">Gerar CNPJ sem pontuação</button>
+        </div>
 
-    <br>
-
-    <table class="table table-bordered"> 
-        <thead>
-            <tr>
-                <th>CPF</th>
-                <th>CNPJ</th>
-            </tr>
-
-        </thead>
-        <TBody>
-            <tr>
-                <td><div class="card-header">
-                    <h3>CPF Gerado:<h3>
-                    <div class="caixa">
-                     <h3 id="cpfGerado"></h3>
-                    </div>  
-                    <button onclick="exibirCpf(true)" class="btn btn-success">Gerar CPF</button>
-                    <button onclick="exibirCpf(false)" class="btn btn-success">Gerar CPF sem pontuação</button>
-                    </div>
-                </td>
-                <td>
-
-                    <div class="card-header">
-                        <h3>CNPJ Gerado:</h3>
-                        <div class="caixa">
-                        <h3 id="cnpjgerado"></h3>
-                        </div>          
-                        <button onclick="exibircnpj(true)" class="btn btn-success">Gerar CNPJ</button>
-                        <button onclick="exibircnpj(false)" class="btn btn-success">Gerar CNPJ sem pontuação</button>
-                    </div>
-
-                </td>
-            </tr>
-        </TBody>
-        <br>
-        <thead>
-            <tr>
-                <th>Placa Mercosul</th>
-                <th>Placa antiga</th>
-            </tr>
-
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <div class="card-header">
-                        <h3>Placa Gerada:</h3>
-                        <div class="caixa">
-                        <h3 id="placaM"></h3>
-                        </div>          
-                        <button onclick="exibirplacaM()" class="btn btn-success">Gerar placa Mercosul</button>
-                    </div>
-                </td>
-                
-                <td>
-                    <div class="card-header">
-                        <h3>Placa Gerada:</h3>
-                        <div class="caixa">
-                        <h3 id="placaA"></h3>
-                        </div>          
-                        <button onclick="exibirplacaA()" class="btn btn-success">Gerar placa antiga</button>
-                    </div>
-                </td>
-            </tr>
-
-        </tbody>
-
-
-    </table>
-
-
-
-
-   
-
-
-
-    <script>
-        // Função para chamar e exibir o CPF gerado
-        function exibirCpf(ponto) {
-            var cpf = gerarCpfAleatorio(ponto);
-            document.getElementById("cpfGerado").innerHTML =  cpf;
-        }
-        // Função para chamar e exibir o CNPJ gerado
-        function exibircnpj(ponto) {
-            var cpnpj = gerarCNPJ(ponto);
-            document.getElementById("cnpjgerado").innerHTML =  cpnpj;
-        }
-        // Função para chamar e exibir a placa Mercosul gerada
-        function exibirplacaM() {
-            var placa2 = gerarPlacaMercosul();
-            document.getElementById("placaM").innerHTML =  placa2;
-        }
-         // Função para chamar e exibir a placa antiga
-        function exibirplacaA() {
-            var placa1 = gerarPlacaAntiga();
-            document.getElementById("placaA").innerHTML =  placa1;
-        }
+        <div class="card-header">
+            <h3>Gerador de plca Mercosul</h3>
+            <h6>Placa Gerada:</h6>
+            <div class="caixa1">
+            <h6 id="placaM">AAA1A11</h6>
+            </div>          
+            <button onclick="exibirplacaM()" class="btn btn-primary">Gerar placa Mercosul</button>
+            <hr>
+            <h3>Gerador de placa antiga</h3>
+            <h6>Placa Gerada:</h6>
+            <div class="caixa1">
+            <h6 id="placaA">BBB-0000</h6>
+            </div>          
+            <button onclick="exibirplacaA()" class="btn btn-primary">Gerar placa antiga</button>
+        </div>
+        <div class="card-header">
+            <h3>Conversor de Placa</h3>
+            <label for="placaAntiga">Digite a placa antiga:</label>
+            <input class="caixa1" type="text" id="placaAntiga">
+            <p id="placaConvertida"></p>
+            <button onclick="converterPlaca()" class="btn btn-primary">Converter</button>
+            
+        </div>
         
-    </script>
-    <style>
-        .caixa {
-          border: 1px solid #000000;
-          padding: 5px;
-          margin: 10px;
-          background-color: #aaec7e;
-          border-radius: 10px;
-          line-height: 30px;
-          width: 255px;
-        }
-      </style>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="/js/bootstrap.min.js"></script>
-</body>
+        
+    </body>
 
 </html>
+
+<style>
+
+    .caixa {
+        border: 1px solid #000000;
+        padding: 1px;
+        margin: 9px;
+        background-color: rgb(160, 205, 255);
+        border-radius: 10px;
+        line-height: 10px;
+        width: 160px;
+        max-height: 30px; /* Ajuste a altura máxima conforme necessário */
+        overflow: hidden; /* Esconde o conteúdo que excede a altura máxima */
+    }
+
+    .caixa h6 {
+        margin: 0; /* Remover a margem padrão do h6 */
+    }
+
+
+    .caixa1 {
+      border: 1px solid #000000;
+      padding: 4px;
+      margin: 8px;
+      background-color:rgb(160, 205, 255);
+      border-radius: 10px;
+      line-height: 30px;
+      width: 85px;
+    }
+</style>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+crossorigin="anonymous"></script>
+<script src="/js/bootstrap.min.js"></script>
